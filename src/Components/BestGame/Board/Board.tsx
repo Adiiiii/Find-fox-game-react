@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Tile from "./Tile/Tile";
 import { BoardWrapper } from "./Board.styles";
-import { getRandomNumber } from "../BestGame.helper";
-import { getImageUrl } from "../BoardGame.service";
+import { getRandomNumber } from "../../../Helpers/BestGame.helper";
+import { getImageUrl } from "../../../Services/BoardGame.service";
 import Metrics from "../../../Components/BestGame/Metrics/Metrics";
 import AnimatedLoader from "../../../Components/Common/AnimatedLoader";
 

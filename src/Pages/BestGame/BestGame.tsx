@@ -1,6 +1,6 @@
 import React from "react";
 import { Heading, Wrapper } from "./BestGame.styles";
-import Board from "./Board/Board";
+import Board from "../../Components/BestGame/Board/Board";
 const BestGame = () => {
   return (
     <Wrapper>
