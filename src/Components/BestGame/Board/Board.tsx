@@ -25,12 +25,7 @@ const Board = () => {
 
   const generateBoardData = async () => {
     setApiInPorgress(true);
-    const gridData: {
-      [key: string]: {
-        url: string;
-        animalName: string;
-      };
-    } = {};
+    const gridData: GridData = {};
     const foxTileIndex = getRandomNumber();
     for (let i = 1; i <= BOARD_LENGTH; i++) {
       const animalName = i === foxTileIndex ? "fox" : "dog";

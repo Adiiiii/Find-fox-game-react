@@ -8,5 +8,7 @@ export const FONT_SIZE = {
 
 export const COLORS = {
   black: "#000",
-  white: "#fff"
+  white: "#fff",
+  yellow: "#ffee59",
+  yellow_dark: "#f3db08"
 };

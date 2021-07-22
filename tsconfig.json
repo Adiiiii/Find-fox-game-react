@@ -6,7 +6,7 @@
         "strict": true,
         "strictFunctionTypes": true,
         "esModuleInterop": true,
-        "noEmit": true,
+        "noEmit": false,
         "lib": [
             "dom",
             "es2015"

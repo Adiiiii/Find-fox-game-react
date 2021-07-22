@@ -1,17 +1,23 @@
 import "./styles.css";
 import BestGame from "./Pages/BestGame/BestGame";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import WelcomeScreen from "./Pages/WelcomeScreen/WelcomeScreen";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import UserDataProvider from "./StateProviders/UserDataProvider";
 export default function App() {
   return (
     <div className="App">
-      <Router>
-        <Switch>
-          <Route path="/">
-            <BestGame />
-          </Route>
-        </Switch>
-      </Router>
-      <BestGame />
+      <UserDataProvider>
+        <Router>
+          <Switch>
+            <Route path="/game">
+              <BestGame />
+            </Route>
+            <Route path="/">
+              <WelcomeScreen />
+            </Route>
+          </Switch>
+        </Router>
+      </UserDataProvider>
     </div>
   );
 }
