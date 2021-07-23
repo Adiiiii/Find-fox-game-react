@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { StyledFunction } from "styled-components";
 import { FONT_SIZE, COLORS } from "../../Constants/Styles";
 import { Link } from "react-router-dom";
 
@@ -18,7 +18,7 @@ export const Label = styled.p`
   padding: 0;
 `;
 
-export const LinkButton = styled(Link)`
+export const LinkButton = styled(Link)<{ disableLink: boolean }>`
   background: ${COLORS.yellow};
   color: ${COLORS.black};
   text-decoration: none;
