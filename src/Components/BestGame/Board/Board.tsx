@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import Tile from "./Tile/Tile";
 import { BoardWrapper } from "./Board.styles";
 import { getRandomNumber } from "../../../Helpers/BestGame.helper";
@@ -22,6 +23,7 @@ const Board = () => {
   const [score, setScore] = useState(0);
   const [apiInProgress, setApiInPorgress] = useState(false);
   const [remainingTime, setRemainingTime] = useState(TIME);
+  const history = useHistory();
 
   const generateBoardData = async () => {
     setApiInPorgress(true);
@@ -50,6 +52,7 @@ const Board = () => {
       console.log(remainingTime);
       if (remainingTime === 0) {
         clearInterval(timer);
+        history.push("/scoreboard");
       } else {
         setRemainingTime(remainingTime - 1);
       }

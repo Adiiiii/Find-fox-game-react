@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   LinkButton,
   InputWrapper,
@@ -6,22 +6,54 @@ import {
   Label,
   NameInput
 } from "./WelcomeScreen.styles";
+import { UsersContext } from "../../StateProviders/UserDataProvider";
 
 const WelcomeScreen = () => {
   const [name, setName] = useState();
+  const [showInput, setShowInput] = useState(true);
+
+  const { setActiveUser } = useContext(UsersContext);
 
   const setUserName = (e: any) => {
-    setName(e.target.value.trim());
+    const value = e.target.value.trim();
+    setName(value);
+    if (value) {
+      setShowInput(false);
+    }
   };
+
+  const setPlayerData = () => {
+    const uniqueId = Date.now();
+    const user = {
+      name,
+      id: uniqueId
+    };
+    setActiveUser(user);
+  };
+
+  const userNameView = () =>
+    showInput ? (
+      <NameInput
+        defaultValue={name}
+        onBlur={(event) => setUserName(event)}
+        type="text"
+      />
+    ) : (
+      <p onClick={() => setShowInput(true)}>{name}</p>
+    );
 
   return (
     <WelcomeScreenWrapper>
       <p>Spot the Fox! Game </p>
       <InputWrapper>
         <Label>Name:</Label>
-        <NameInput onBlur={(event) => setUserName(event)} type="text" />
+        {userNameView()}
       </InputWrapper>
-      <LinkButton disableLink={!Boolean(name)} to="/game">
+      <LinkButton
+        onClick={() => setPlayerData()}
+        disableLink={!Boolean(name)}
+        to="/game"
+      >
         Play
       </LinkButton>
     </WelcomeScreenWrapper>

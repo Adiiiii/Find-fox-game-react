@@ -1,16 +1,32 @@
 import React, { createContext, useState } from "react";
 
-export const UserContext = createContext({});
+interface user {
+  name: string;
+  id: number;
+}
+interface Context {
+  activeUser?: user;
+  setActiveUser?: any;
+  scoreBoard?: object;
+  UpdateScoreBoard?: any;
+}
+
+const intialData: Context = {};
+export const UsersContext = createContext(intialData);
 
 interface Props {
   children: React.ReactNode;
 }
 const UserDataProvider = ({ children }: Props) => {
-  const [userData, setUserData] = useState({});
+  const [activeUser, setActiveUser] = useState({});
+  const [scoreBoard, UpdateScoreBoard] = useState({});
+
   return (
-    <UserContext.Provider value={{ userData, setUserData }}>
+    <UsersContext.Provider
+      value={{ activeUser, setActiveUser, scoreBoard, UpdateScoreBoard }}
+    >
       {children}
-    </UserContext.Provider>
+    </UsersContext.Provider>
   );
 };
 
