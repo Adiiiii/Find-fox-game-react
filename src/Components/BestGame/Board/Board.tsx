@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { UsersContext } from "../../../StateProviders/UserDataProvider";
 import Tile from "./Tile/Tile";
 import { BoardWrapper } from "./Board.styles";
 import { getRandomNumber } from "../../../Helpers/BestGame.helper";
@@ -16,14 +17,14 @@ interface GridData {
 
 const Board = () => {
   const BOARD_LENGTH = 9;
-  const TIME = 30;
+  const TIME = 5;
   const initialData: GridData = {};
-
   const [boardData, setBoardData] = useState(initialData);
   const [score, setScore] = useState(0);
   const [apiInProgress, setApiInPorgress] = useState(false);
   const [remainingTime, setRemainingTime] = useState(TIME);
   const history = useHistory();
+  const { activeUser, UpdateScoreBoard, scoreBoard } = useContext(UsersContext);
 
   const generateBoardData = async () => {
     setApiInPorgress(true);
@@ -41,6 +42,21 @@ const Board = () => {
     setApiInPorgress(false);
   };
 
+  const updateLeaderBoard = () => {
+    const nowDate = new Date();
+    const formattedDate = `${nowDate.getFullYear()}, ${nowDate.getMonth()} ${nowDate.getDay()}`;
+
+    const userStats = {
+      name: activeUser?.name,
+      id: activeUser?.id,
+      date: formattedDate,
+      score: score
+    };
+    console.log({ userStats });
+    UpdateScoreBoard({ ...scoreBoard, ...userStats });
+    history.push("/scoreboard");
+  };
+
   useEffect(() => {
     generateBoardData();
   }, []);
@@ -52,7 +68,7 @@ const Board = () => {
       console.log(remainingTime);
       if (remainingTime === 0) {
         clearInterval(timer);
-        history.push("/scoreboard");
+        updateLeaderBoard();
       } else {
         setRemainingTime(remainingTime - 1);
       }
@@ -60,7 +76,7 @@ const Board = () => {
     return () => {
       clearInterval(timer);
     };
-  }, [remainingTime]);
+  }, [remainingTime, history]);
 
   const clickHandler = (selectedAnimal: "fox" | "cat" | "dog") => {
     if (selectedAnimal === "fox") {
@@ -73,7 +89,6 @@ const Board = () => {
 
   return (
     <>
-      {console.log("re-rendered")}
       <Metrics score={score} remainingTime={remainingTime} />
       <BoardWrapper>
         {Object.keys(boardData).length

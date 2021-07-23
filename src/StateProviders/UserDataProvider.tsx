@@ -1,11 +1,11 @@
 import React, { createContext, useState } from "react";
 
-interface user {
+interface User {
   name: string;
   id: number;
 }
 interface Context {
-  activeUser?: user;
+  activeUser?: User | {};
   setActiveUser?: any;
   scoreBoard?: object;
   UpdateScoreBoard?: any;
