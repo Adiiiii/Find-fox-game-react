@@ -7,6 +7,8 @@ import {
   TableRow,
   ActionWrapper
 } from "./Scoreboard.styles";
+
+import { Heading } from "../WelcomeScreen/WelcomeScreen.styles";
 import { LinkButton } from "../WelcomeScreen/WelcomeScreen.styles";
 
 const Scoreboard = () => {
@@ -16,7 +18,7 @@ const Scoreboard = () => {
   );
   return (
     <Wrapper>
-      <p>Click the Fox! Game </p>
+      <Heading>Click the Fox! Game </Heading>
       <p>SCOREBOARD </p>
       <table>
         <TableRow>

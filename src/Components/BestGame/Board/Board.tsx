@@ -17,7 +17,7 @@ interface GridData {
 
 const Board = () => {
   const BOARD_LENGTH = 9;
-  const TIME = 5;
+  const TIME = 30;
   const initialData: GridData = {};
   const [boardData, setBoardData] = useState(initialData);
   const [score, setScore] = useState(0);
@@ -66,7 +66,7 @@ const Board = () => {
 
   useEffect(() => {
     let timer: any;
-    // start the timer once boardData refreshes
+    // start the timer once boardData exists
     if (Object.keys(boardData).length) {
       timer = setInterval(() => {
         console.log(remainingTime);

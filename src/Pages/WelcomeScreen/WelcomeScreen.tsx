@@ -45,7 +45,7 @@ const WelcomeScreen = () => {
 
   return (
     <WelcomeScreenWrapper>
-      <Heading>Spot the Fox! Game </Heading>
+      <Heading>Click the Fox! Game </Heading>
       <InputWrapper>
         <Label>Name:</Label>
         {userNameView()}

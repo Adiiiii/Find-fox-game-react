@@ -6,7 +6,6 @@ const BestGame = () => {
     <Wrapper>
       <Heading>Best game indeed</Heading>
       <Board />
-      {/* tile board starts */}
     </Wrapper>
   );
 };
