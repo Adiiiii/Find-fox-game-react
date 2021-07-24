@@ -44,7 +44,10 @@ const Board = () => {
 
   const updateLeaderBoard = () => {
     const nowDate = new Date();
-    const formattedDate = `${nowDate.getFullYear()}, ${nowDate.getMonth()} ${nowDate.getDay()}`;
+    const formattedDate = `${nowDate.getFullYear()}, ${nowDate.toLocaleString(
+      "default",
+      { month: "short" }
+    )} ${nowDate.getDay()}`;
 
     const userStats = {
       name: activeUser?.name,
