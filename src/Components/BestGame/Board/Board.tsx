@@ -17,7 +17,7 @@ interface GridData {
 
 const Board = () => {
   const BOARD_LENGTH = 9;
-  const TIME = 10;
+  const TIME = 30;
   const initialData: GridData = {};
   const [boardData, setBoardData] = useState(initialData);
   const [score, setScore] = useState(0);
@@ -62,10 +62,15 @@ const Board = () => {
     history.push("/scoreboard");
   }, [score]);
 
+  // generate imagesData on component mount
   useEffect(() => {
     generateBoardData();
   }, []);
 
+  /**
+   * below effect runs the timer and
+   * updates the final score on time completion
+   */
   useEffect(() => {
     let timer: any;
     // start the timer once boardData exists
