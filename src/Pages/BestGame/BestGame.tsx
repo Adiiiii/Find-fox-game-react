@@ -4,7 +4,7 @@ import Board from "../../Components/BestGame/Board/Board";
 const BestGame = () => {
   return (
     <Wrapper>
-      <Heading>Best game indeed</Heading>
+      <Heading>Its Clicking time!</Heading>
       <Board />
     </Wrapper>
   );

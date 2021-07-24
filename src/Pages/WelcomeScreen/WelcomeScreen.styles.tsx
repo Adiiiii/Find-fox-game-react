@@ -22,7 +22,7 @@ export const Label = styled.p`
   font-size: ${FONT_SIZE.xl};
 `;
 
-export const LinkButton = styled(Link)<{ disableLink: boolean }>`
+export const LinkButton = styled(Link)<{ disableLink?: boolean }>`
   background: ${COLORS.yellow};
   color: ${COLORS.black};
   text-decoration: none;

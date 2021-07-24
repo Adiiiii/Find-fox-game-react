@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { UsersContext } from "../../../StateProviders/UserDataProvider";
 import Tile from "./Tile/Tile";
@@ -17,7 +17,7 @@ interface GridData {
 
 const Board = () => {
   const BOARD_LENGTH = 9;
-  const TIME = 30;
+  const TIME = 10;
   const initialData: GridData = {};
   const [boardData, setBoardData] = useState(initialData);
   const [score, setScore] = useState(0);
@@ -44,7 +44,7 @@ const Board = () => {
     setImageClicked(false);
   };
 
-  const updateLeaderBoard = () => {
+  const updateLeaderBoard = useCallback(() => {
     const nowDate = new Date();
     const formattedDate = `${nowDate.getFullYear()}, ${nowDate.toLocaleString(
       "default",
@@ -53,14 +53,14 @@ const Board = () => {
 
     const userStats = {
       name: activeUser?.name,
-      id: activeUser?.id,
+      id: Date.now(),
       date: formattedDate,
       score: score
     };
     console.log({ userStats });
     UpdateScoreBoard([...scoreBoard, userStats]);
     history.push("/scoreboard");
-  };
+  }, [score]);
 
   useEffect(() => {
     generateBoardData();
@@ -71,7 +71,6 @@ const Board = () => {
     // start the timer once boardData exists
     if (Object.keys(boardData).length) {
       timer = setInterval(() => {
-        console.log(remainingTime);
         if (remainingTime === 0) {
           clearInterval(timer);
           updateLeaderBoard();
@@ -83,7 +82,7 @@ const Board = () => {
     return () => {
       clearInterval(timer);
     };
-  }, [boardData, remainingTime, history]);
+  }, [boardData, remainingTime, score, updateLeaderBoard]);
 
   const clickHandler = (selectedAnimal: "fox" | "cat" | "dog") => {
     setImageClicked(true);
@@ -98,6 +97,7 @@ const Board = () => {
 
   return (
     <>
+      {console.log("rerendered")}
       <Metrics score={score} remainingTime={remainingTime} />
       <BoardWrapper style={{ pointerEvents: imageClicked ? "none" : "all" }}>
         {Object.keys(boardData).length

@@ -14,7 +14,7 @@ import { LinkButton } from "../WelcomeScreen/WelcomeScreen.styles";
 const Scoreboard = () => {
   const { scoreBoard } = useContext(UsersContext);
   const sortedScoreBoard: UserStats[] = scoreBoard?.sort(
-    (user1, user2) => user1.score - user2.score
+    (user1, user2) => user2.score - user1.score
   );
   return (
     <Wrapper>
@@ -29,7 +29,7 @@ const Scoreboard = () => {
           <TableHead scope="col">Score</TableHead>
         </TableRow>
         {sortedScoreBoard.map((user, index) => (
-          <TableRow>
+          <TableRow key={user.id}>
             <TableHead scope="row">{index}</TableHead>
             <TableCell> {user.name}</TableCell>
 
