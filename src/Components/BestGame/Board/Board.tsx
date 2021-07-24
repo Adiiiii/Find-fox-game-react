@@ -23,6 +23,7 @@ const Board = () => {
   const [score, setScore] = useState(0);
   const [apiInProgress, setApiInPorgress] = useState(false);
   const [remainingTime, setRemainingTime] = useState(TIME);
+  const [imageClicked, setImageClicked] = useState(false);
   const history = useHistory();
   const { activeUser, UpdateScoreBoard, scoreBoard } = useContext(UsersContext);
 
@@ -40,6 +41,7 @@ const Board = () => {
     }
     setBoardData(gridData);
     setApiInPorgress(false);
+    setImageClicked(false);
   };
 
   const updateLeaderBoard = () => {
@@ -84,6 +86,8 @@ const Board = () => {
   }, [boardData, remainingTime, history]);
 
   const clickHandler = (selectedAnimal: "fox" | "cat" | "dog") => {
+    setImageClicked(true);
+
     if (selectedAnimal === "fox") {
       setScore(score + 1);
     } else {
@@ -95,7 +99,7 @@ const Board = () => {
   return (
     <>
       <Metrics score={score} remainingTime={remainingTime} />
-      <BoardWrapper>
+      <BoardWrapper style={{ pointerEvents: imageClicked ? "none" : "all" }}>
         {Object.keys(boardData).length
           ? Object.keys(boardData).map((key) => (
               <Tile
