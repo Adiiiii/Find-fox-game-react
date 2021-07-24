@@ -38,6 +38,7 @@ const WelcomeScreen = () => {
         defaultValue={name}
         onBlur={(event) => setUserName(event)}
         type="text"
+        autoFocus
       />
     ) : (
       <Label onClick={() => setShowInput(true)}>{name}</Label>
