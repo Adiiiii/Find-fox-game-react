@@ -64,22 +64,24 @@ const Board = () => {
     generateBoardData();
   }, []);
 
-  // start the timer once boardData refreshes
   useEffect(() => {
     let timer: any;
-    timer = setInterval(() => {
-      console.log(remainingTime);
-      if (remainingTime === 0) {
-        clearInterval(timer);
-        updateLeaderBoard();
-      } else {
-        setRemainingTime(remainingTime - 1);
-      }
-    }, 1000);
+    // start the timer once boardData refreshes
+    if (Object.keys(boardData).length) {
+      timer = setInterval(() => {
+        console.log(remainingTime);
+        if (remainingTime === 0) {
+          clearInterval(timer);
+          updateLeaderBoard();
+        } else {
+          setRemainingTime(remainingTime - 1);
+        }
+      }, 1000);
+    }
     return () => {
       clearInterval(timer);
     };
-  }, [remainingTime, history]);
+  }, [boardData, remainingTime, history]);
 
   const clickHandler = (selectedAnimal: "fox" | "cat" | "dog") => {
     if (selectedAnimal === "fox") {

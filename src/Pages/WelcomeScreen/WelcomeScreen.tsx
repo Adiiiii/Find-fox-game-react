@@ -4,7 +4,8 @@ import {
   InputWrapper,
   WelcomeScreenWrapper,
   Label,
-  NameInput
+  NameInput,
+  Heading
 } from "./WelcomeScreen.styles";
 import { UsersContext } from "../../StateProviders/UserDataProvider";
 
@@ -39,12 +40,12 @@ const WelcomeScreen = () => {
         type="text"
       />
     ) : (
-      <p onClick={() => setShowInput(true)}>{name}</p>
+      <Label onClick={() => setShowInput(true)}>{name}</Label>
     );
 
   return (
     <WelcomeScreenWrapper>
-      <p>Spot the Fox! Game </p>
+      <Heading>Spot the Fox! Game </Heading>
       <InputWrapper>
         <Label>Name:</Label>
         {userNameView()}

@@ -1,6 +1,13 @@
 import React, { useContext } from "react";
 import { UsersContext, UserStats } from "../../StateProviders/UserDataProvider";
-import { Wrapper, TableHead, TableCell, TableRow } from "./Scoreboard.styles";
+import {
+  Wrapper,
+  TableHead,
+  TableCell,
+  TableRow,
+  ActionWrapper
+} from "./Scoreboard.styles";
+import { LinkButton } from "../WelcomeScreen/WelcomeScreen.styles";
 
 const Scoreboard = () => {
   const { scoreBoard } = useContext(UsersContext);
@@ -29,6 +36,10 @@ const Scoreboard = () => {
           </TableRow>
         ))}
       </table>
+      <ActionWrapper>
+        <LinkButton to="/game">Replay</LinkButton>
+        <LinkButton to="/">Home</LinkButton>
+      </ActionWrapper>
     </Wrapper>
   );
 };

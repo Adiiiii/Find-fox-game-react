@@ -39,3 +39,14 @@ export const TableRow = styled.tr`
     background-color: ${COLORS.gray_medium};
   }
 `;
+
+export const ActionWrapper = styled.div`
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  ::focus {
+    color: ${COLORS.white};
+  }
+`;

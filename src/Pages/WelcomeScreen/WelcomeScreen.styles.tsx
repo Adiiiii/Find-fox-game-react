@@ -3,7 +3,6 @@ import { FONT_SIZE, COLORS } from "../../Constants/Styles";
 import { Link } from "react-router-dom";
 
 export const WelcomeScreenWrapper = styled.div`
-  border: 1px solid black;
   border-radius: 15px;
   padding: 20px;
   align-items: center;
@@ -13,9 +12,14 @@ export const WelcomeScreenWrapper = styled.div`
   width: 50%;
 `;
 
+export const Heading = styled.p`
+  font-size: ${FONT_SIZE.xxl};
+`;
+
 export const Label = styled.p`
   margin: 0 12px 0 0;
   padding: 0;
+  font-size: ${FONT_SIZE.xl};
 `;
 
 export const LinkButton = styled(Link)<{ disableLink: boolean }>`
@@ -44,5 +48,5 @@ export const InputWrapper = styled.div`
 export const NameInput = styled.input`
   border-radius: 5px;
   font-size: ${FONT_SIZE.large};
-  width: 150px;
+  /* width: 150px; */
 `;
