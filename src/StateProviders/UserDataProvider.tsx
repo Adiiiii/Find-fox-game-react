@@ -4,14 +4,25 @@ interface User {
   name: string;
   id: number;
 }
+
+export interface UserStats {
+  name: string;
+  id: number;
+  date: string;
+  score: number;
+}
+
 interface Context {
-  activeUser?: User | {};
+  activeUser: User | {};
   setActiveUser?: any;
-  scoreBoard?: object;
+  scoreBoard: UserStats[] | [];
   UpdateScoreBoard?: any;
 }
 
-const intialData: Context = {};
+const intialData: Context = {
+  activeUser: "",
+  scoreBoard: []
+};
 export const UsersContext = createContext(intialData);
 
 interface Props {
@@ -19,7 +30,7 @@ interface Props {
 }
 const UserDataProvider = ({ children }: Props) => {
   const [activeUser, setActiveUser] = useState({});
-  const [scoreBoard, UpdateScoreBoard] = useState({});
+  const [scoreBoard, UpdateScoreBoard] = useState([]);
 
   return (
     <UsersContext.Provider

@@ -53,7 +53,7 @@ const Board = () => {
       score: score
     };
     console.log({ userStats });
-    UpdateScoreBoard({ ...scoreBoard, ...userStats });
+    UpdateScoreBoard([...scoreBoard, userStats]);
     history.push("/scoreboard");
   };
 
