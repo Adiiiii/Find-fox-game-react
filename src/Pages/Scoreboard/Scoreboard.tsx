@@ -40,7 +40,7 @@ const Scoreboard = () => {
       </table>
       <ActionWrapper>
         <LinkButton to="/game">Replay</LinkButton>
-        <LinkButton to="/">Home</LinkButton>
+        <LinkButton  style={{marginLeft: '40px'}} to="/">Home</LinkButton>
       </ActionWrapper>
     </Wrapper>
   );

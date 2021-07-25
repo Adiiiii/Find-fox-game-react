@@ -43,9 +43,8 @@ export const TableRow = styled.tr`
 export const ActionWrapper = styled.div`
   margin-top: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  width: 100%;
   ::focus {
     color: ${COLORS.white};
   }
