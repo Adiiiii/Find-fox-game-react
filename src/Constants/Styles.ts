@@ -13,5 +13,6 @@ export const COLORS = {
   yellow_dark: "#da9a00",
   gray_light: "#f0f0f0",
   gray_medium: "#e1e1e1",
-  gray_dark: "#a5a5a5"
+  gray_dark: "#a5a5a5",
+  red: "#9a1e1e"
 };
