@@ -30,7 +30,7 @@ const Scoreboard = () => {
         </TableRow>
         {sortedScoreBoard.map((user, index) => (
           <TableRow key={user.id}>
-            <TableHead scope="row">{index}</TableHead>
+            <TableHead scope="row">{index + 1}</TableHead>
             <TableCell> {user.name}</TableCell>
 
             <TableCell>{user.date}</TableCell>
@@ -40,7 +40,9 @@ const Scoreboard = () => {
       </table>
       <ActionWrapper>
         <LinkButton to="/game">Replay</LinkButton>
-        <LinkButton  style={{marginLeft: '40px'}} to="/">Home</LinkButton>
+        <LinkButton style={{ marginLeft: "40px" }} to="/">
+          Home
+        </LinkButton>
       </ActionWrapper>
     </Wrapper>
   );
